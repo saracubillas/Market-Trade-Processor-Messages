@@ -1,0 +1,13 @@
+markettrade_demo:
+    resource: "@MarkettradeDemoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+users:
+    type: rest
+    resource: Markettrade\DemoBundle\Controller\UsersController
+
+markettrade_processor:
+    type: rest
+    prefix: /api
+    resource: "@MarkettradeDemoBundle/Resources/config/routes.yml"
