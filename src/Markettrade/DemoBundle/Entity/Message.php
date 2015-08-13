@@ -3,6 +3,7 @@
 namespace Markettrade\DemoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Markettrade\DemoBundle\Model\Message as MessageInterface;
 
 /**
  * Message
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Message
+class Message implements MessageInterface
 {
     /**
      * @var integer

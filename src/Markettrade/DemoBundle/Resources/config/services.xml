@@ -4,17 +4,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
-    <parameters>
-        <parameter key="markettrade_demo.example.class">Markettrade\DemoBundle\Example</parameter>
-    </parameters>
+<parameters>
+<parameter key="markettrade_demo.handler.class">Markettrade\DemoBundle\Handler\MessageHandler</parameter>
+<parameter key="markettrade_demo.message.class">Markettrade\DemoBundle\Entity\Message</parameter>
+</parameters>
 
-    <services>
-        <service id="markettrade_demo.example" class="%markettrade_demo.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
-    </services>
-    -->
+<services>
+<service id="markettrade_demo.message.handler" class="%markettrade_demo.handler.class%">
+    <argument type="service" id="doctrine.orm.entity_manager" />
+    <argument>%markettrade_demo.message.class%</argument>
+</service>
+</services>
+
 </container>
