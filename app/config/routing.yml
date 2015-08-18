@@ -11,3 +11,7 @@ markettrade_processor:
     type: rest
     prefix: /api
     resource: "@MarkettradeDemoBundle/Resources/config/routes.yml"
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

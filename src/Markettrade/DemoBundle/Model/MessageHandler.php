@@ -2,6 +2,10 @@
 
 namespace Markettrade\DemoBundle\Model;
 
-interface MessageHandler {
+use Symfony\Component\HttpFoundation\Request;
 
+interface MessageHandler
+{
+    public function get($id);
+    public function post(Request $request);
 } 
