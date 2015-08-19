@@ -4,6 +4,7 @@ namespace Markettrade\DemoBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
+use Markettrade\DemoBundle\Exception\InvalidFormException;
 use Markettrade\DemoBundle\Form\MessageType;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\Form\FormTypeInterface;
@@ -58,7 +59,7 @@ class MessageController extends FOSRestController
      * )
      *
      * @Annotations\View(
-     *  template = "MarkettradeDamoBundle:Message:newMessage.html.twig",
+     *  template = "MarkettradeDemoBundle:Message:newMessage.html.twig",
      *  statusCode = 400,
      *  templateVar = "form"
      * )
@@ -70,25 +71,22 @@ class MessageController extends FOSRestController
     public function postMessageAction(Request $request)
     {
         try {
-
             $newMessage = $this->container->get('markettrade_demo.message.handler')->post($request);
 
-var_dump($newMessage);
             $routeOptions = array(
                 'id' => $newMessage->getId(),
                 '_format' => $request->get('_format')
             );
 
             return $this->routeRedirectView('api_1_get_message', $routeOptions, Codes::HTTP_CREATED);
-        } catch (\Exception $exception) {
+        } catch (InvalidFormException $exception) {
 
-            printf($exception->getMessage());
-//            return $exception->getForm();
+            return $exception->getForm();
         }
     }
 
     /**
-     * Presents the form to use to create a new page.
+     * Presents the form to use to create a new message.
      *
      * @ApiDoc(
      *   resource = true,
@@ -97,7 +95,9 @@ var_dump($newMessage);
      *   }
      * )
      *
-     * @Annotations\View()
+     * @Annotations\View(
+     *  templateVar = "form"
+     * )
      *
      * @return FormTypeInterface
      */

@@ -42,21 +42,16 @@ class MessageHandler implements MessageHandlerInterface
 
     private function processForm(Message $message, Request $request)
     {
-//        $form = $this->formFactory->create(new MessageType(), $message);
-
         $form = $this->formFactory->createBuilder(new MessageType(), $message)->getForm();
-        $form->bindRequest($request);
+        $form->bind($request->request->all());
 
         if ($form->isValid()) {
-            var_dump('eo');
             $message = $form->getData();
             $this->om->persist($message);
             $this->om->flush($message);
 
             return $message;
         }
-
-        var_dump($form->getErrors());
 
         throw new InvalidFormException('Invalid submitted data', $form);
     }

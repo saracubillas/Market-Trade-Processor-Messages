@@ -65,9 +65,9 @@ class Message implements MessageInterface
     private $rate;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="timePlaced", type="datetime")
+     * @ORM\Column(name="timePlaced", type="string")
      */
     private $timePlaced;
 
@@ -230,7 +230,7 @@ class Message implements MessageInterface
     /**
      * Set timePlaced
      *
-     * @param \DateTime $timePlaced
+     * @param string $timePlaced
      * @return Message
      */
     public function setTimePlaced($timePlaced)
@@ -243,7 +243,7 @@ class Message implements MessageInterface
     /**
      * Get timePlaced
      *
-     * @return \DateTime 
+     * @return string
      */
     public function getTimePlaced()
     {
