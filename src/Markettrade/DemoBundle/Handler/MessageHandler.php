@@ -55,4 +55,18 @@ class MessageHandler implements MessageHandlerInterface
 
         throw new InvalidFormException('Invalid submitted data', $form);
     }
+    
+    /**
+     * Get a list of Messages.
+     *
+     * @param int $limit  the limit of the result
+     * @param int $offset starting from the offset
+     *
+     * @return array
+     */
+    public function all($limit = 5, $offset = 0)
+    {
+        return $this->repository->findBy([], null, $limit, $offset);
+    }
+    
 } 
