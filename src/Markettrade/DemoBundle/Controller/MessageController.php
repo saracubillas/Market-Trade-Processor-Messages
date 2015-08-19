@@ -3,6 +3,7 @@
 namespace Markettrade\DemoBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View;
 use Markettrade\DemoBundle\Exception\InvalidFormException;
 use Markettrade\DemoBundle\Form\MessageType;
